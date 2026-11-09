@@ -9,43 +9,43 @@ ifndef verbose
 endif
 
 ifeq ($(config),debug_x64)
-  test_tds_config = debug_x64
+  tds_config = debug_x64
   raylib_config = debug_x64
 
 else ifeq ($(config),debug_x86)
-  test_tds_config = debug_x86
+  tds_config = debug_x86
   raylib_config = debug_x86
 
 else ifeq ($(config),debug_arm64)
-  test_tds_config = debug_arm64
+  tds_config = debug_arm64
   raylib_config = debug_arm64
 
 else ifeq ($(config),release_x64)
-  test_tds_config = release_x64
+  tds_config = release_x64
   raylib_config = release_x64
 
 else ifeq ($(config),release_x86)
-  test_tds_config = release_x86
+  tds_config = release_x86
   raylib_config = release_x86
 
 else ifeq ($(config),release_arm64)
-  test_tds_config = release_arm64
+  tds_config = release_arm64
   raylib_config = release_arm64
 
 else
   $(error "invalid configuration $(config)")
 endif
 
-PROJECTS := test-tds raylib
+PROJECTS := tds raylib
 
 .PHONY: all clean help $(PROJECTS) 
 
 all: $(PROJECTS)
 
-test-tds: raylib
-ifneq (,$(test_tds_config))
-	@echo "==== Building test-tds ($(test_tds_config)) ===="
-	@${MAKE} --no-print-directory -C . -f test-tds.make config=$(test_tds_config)
+tds: raylib
+ifneq (,$(tds_config))
+	@echo "==== Building tds ($(tds_config)) ===="
+	@${MAKE} --no-print-directory -C . -f tds.make config=$(tds_config)
 endif
 
 raylib:
@@ -55,7 +55,7 @@ ifneq (,$(raylib_config))
 endif
 
 clean:
-	@${MAKE} --no-print-directory -C . -f test-tds.make clean
+	@${MAKE} --no-print-directory -C . -f tds.make clean
 	@${MAKE} --no-print-directory -C . -f raylib.make clean
 
 help:
@@ -72,7 +72,7 @@ help:
 	@echo "TARGETS:"
 	@echo "   all (default)"
 	@echo "   clean"
-	@echo "   test-tds"
+	@echo "   tds"
 	@echo "   raylib"
 	@echo ""
 	@echo "For more information, see https://github.com/premake/premake-core/wiki"
