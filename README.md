@@ -7,11 +7,13 @@ Made using the [raylib quickstart repo](https://github.com/raylib-extras/raylib-
 
 ## Scope for the project
 - [X] player with custom sprite
-- [ ] player can move with WASD
-- [ ] player can shoot with LMB
+- [X] player can move with WASD
+- [X] player can shoot with LMB
+- [ ] bullets are removed when they leave the screen
 - [ ] enemies that spawn in random locations
 - [ ] enemies have custom sprite
 - [ ] enemies move towards player
+- [ ] enemies die when shot
 - [ ] score
 - [ ] sfx
 
