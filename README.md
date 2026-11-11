@@ -9,15 +9,35 @@ Made using the [raylib quickstart repo](https://github.com/raylib-extras/raylib-
 - [X] player with custom sprite
 - [X] player can move with WASD
 - [X] player can shoot with LMB
-- [ ] bullets are removed when they leave the screen
-- [ ] enemies that spawn in random locations
-- [ ] enemies have custom sprite
-- [ ] enemies move towards player
-- [ ] enemies die when shot
-- [ ] score
+- [X] bullets are removed when they leave the screen
+- [X] enemies that spawn in random locations
+- [X] enemies have custom sprite
+- [X] enemies move towards player
+- [X] enemies die when shot
+- [X] score
+- [X] death
 - [ ] sfx
 
 ### Stretch goals
 - [ ] multiple enemy types
 - [ ] multiple "guns" (burst?)
-- [ ] health?
+- [ ] health
+- [ ] project structure
+
+
+## Notes on implementation
+**No AI was used in the process. No code or guidance.**
+
+I did not care about architecture very much.
+I was totally okay with writing spaghetti code just to get the features
+checked off.
+In the future, I want to ensure correctness and maintanability of code.
+For now, I just want to finish writing something.
+
+For future, intrusive lists for different entity types.
+Like, there can be an array `enemies` which containes indexes into the
+main `entities` array. Not really sure how to do updates of different
+entity types otherwise. A switch statement seems really bad for performance.
+
+Using a switchback array had weird behavior when deleting
+

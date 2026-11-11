@@ -13,7 +13,12 @@ obj/x64/Debug/tds/main.o: src/main.c /usr/include/stdc-predef.h \
  /usr/include/bits/types/__mbstate_t.h \
  /usr/include/bits/types/__fpos64_t.h /usr/include/bits/types/__FILE.h \
  /usr/include/bits/types/FILE.h /usr/include/bits/types/struct_FILE.h \
- /usr/include/bits/stdio_lim.h build/external/raylib-master/src/raylib.h \
+ /usr/include/bits/stdio_lim.h /usr/include/math.h \
+ /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
+ /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
+ /usr/include/bits/fp-fast.h /usr/include/bits/mathcalls-macros.h \
+ /usr/include/bits/mathcalls-helper-functions.h \
+ /usr/include/bits/mathcalls.h build/external/raylib-master/src/raylib.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdbool.h src/resource_dir.h
 /usr/include/stdc-predef.h:
 /usr/include/stdlib.h:
@@ -42,6 +47,15 @@ obj/x64/Debug/tds/main.o: src/main.c /usr/include/stdc-predef.h \
 /usr/include/bits/types/FILE.h:
 /usr/include/bits/types/struct_FILE.h:
 /usr/include/bits/stdio_lim.h:
+/usr/include/math.h:
+/usr/include/bits/math-vector.h:
+/usr/include/bits/libm-simd-decl-stubs.h:
+/usr/include/bits/flt-eval-method.h:
+/usr/include/bits/fp-logb.h:
+/usr/include/bits/fp-fast.h:
+/usr/include/bits/mathcalls-macros.h:
+/usr/include/bits/mathcalls-helper-functions.h:
+/usr/include/bits/mathcalls.h:
 build/external/raylib-master/src/raylib.h:
 /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdbool.h:
 src/resource_dir.h:
