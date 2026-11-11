@@ -1,4 +1,4 @@
-obj/x64/Debug/raylib/rglfw.o: build/external/raylib-master/src/rglfw.c \
+obj/x64/Release/raylib/rglfw.o: build/external/raylib-master/src/rglfw.c \
  /usr/include/stdc-predef.h /usr/include/features.h \
  /usr/include/features-time64.h /usr/include/bits/wordsize.h \
  /usr/include/bits/timesize.h /usr/include/sys/cdefs.h \
@@ -57,8 +57,8 @@ obj/x64/Debug/raylib/rglfw.o: build/external/raylib-master/src/rglfw.c \
  /usr/include/bits/types/FILE.h /usr/include/bits/types/struct_FILE.h \
  /usr/include/bits/types/cookie_io_functions_t.h \
  /usr/include/bits/stdio_lim.h /usr/include/bits/floatn.h \
- /usr/include/bits/floatn-common.h /usr/include/X11/extensions/Xrandr.h \
- /usr/include/X11/extensions/randr.h \
+ /usr/include/bits/floatn-common.h /usr/include/bits/stdio.h \
+ /usr/include/X11/extensions/Xrandr.h /usr/include/X11/extensions/randr.h \
  /usr/include/X11/extensions/Xrender.h /usr/include/X11/Xutil.h \
  /usr/include/X11/extensions/render.h /usr/include/X11/Xdefs.h \
  /usr/include/X11/XKBlib.h /usr/include/X11/extensions/XKBstr.h \
@@ -102,8 +102,9 @@ obj/x64/Debug/raylib/rglfw.o: build/external/raylib-master/src/rglfw.c \
  build/external/raylib-master/src/external/glfw/src/../include/GLFW/glfw3native.h \
  /usr/include/string.h /usr/include/strings.h /usr/include/stdlib.h \
  /usr/include/bits/waitflags.h /usr/include/bits/waitstatus.h \
- /usr/include/alloca.h /usr/include/bits/types/once_flag.h \
- /usr/include/bits/stdlib-float.h /usr/include/assert.h \
+ /usr/include/alloca.h /usr/include/bits/stdlib-bsearch.h \
+ /usr/include/bits/types/once_flag.h /usr/include/bits/stdlib-float.h \
+ /usr/include/assert.h \
  build/external/raylib-master/src/external/glfw/src/platform.c \
  build/external/raylib-master/src/external/glfw/src/context.c \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/limits.h \
@@ -255,6 +256,7 @@ build/external/raylib-master/src/external/glfw/src/x11_platform.h:
 /usr/include/bits/stdio_lim.h:
 /usr/include/bits/floatn.h:
 /usr/include/bits/floatn-common.h:
+/usr/include/bits/stdio.h:
 /usr/include/X11/extensions/Xrandr.h:
 /usr/include/X11/extensions/randr.h:
 /usr/include/X11/extensions/Xrender.h:
@@ -331,6 +333,7 @@ build/external/raylib-master/src/external/glfw/src/../include/GLFW/glfw3native.h
 /usr/include/bits/waitflags.h:
 /usr/include/bits/waitstatus.h:
 /usr/include/alloca.h:
+/usr/include/bits/stdlib-bsearch.h:
 /usr/include/bits/types/once_flag.h:
 /usr/include/bits/stdlib-float.h:
 /usr/include/assert.h:

@@ -1,4 +1,4 @@
-obj/x64/Debug/raylib/rshapes.o: \
+obj/x64/Release/raylib/rshapes.o: \
  build/external/raylib-master/src/rshapes.c /usr/include/stdc-predef.h \
  build/external/raylib-master/src/raylib.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdarg.h \
@@ -36,7 +36,8 @@ obj/x64/Debug/raylib/rshapes.o: \
  /usr/include/bits/pthreadtypes-arch.h \
  /usr/include/bits/atomic_wide_counter.h /usr/include/bits/struct_mutex.h \
  /usr/include/bits/struct_rwlock.h /usr/include/alloca.h \
- /usr/include/bits/types/once_flag.h /usr/include/bits/stdlib-float.h
+ /usr/include/bits/stdlib-bsearch.h /usr/include/bits/types/once_flag.h \
+ /usr/include/bits/stdlib-float.h
 /usr/include/stdc-predef.h:
 build/external/raylib-master/src/raylib.h:
 /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdarg.h:
@@ -97,5 +98,6 @@ build/external/raylib-master/src/rlgl.h:
 /usr/include/bits/struct_mutex.h:
 /usr/include/bits/struct_rwlock.h:
 /usr/include/alloca.h:
+/usr/include/bits/stdlib-bsearch.h:
 /usr/include/bits/types/once_flag.h:
 /usr/include/bits/stdlib-float.h:

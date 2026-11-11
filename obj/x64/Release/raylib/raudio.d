@@ -1,5 +1,6 @@
-obj/x64/Debug/raylib/raudio.o: build/external/raylib-master/src/raudio.c \
- /usr/include/stdc-predef.h build/external/raylib-master/src/raylib.h \
+obj/x64/Release/raylib/raudio.o: \
+ build/external/raylib-master/src/raudio.c /usr/include/stdc-predef.h \
+ build/external/raylib-master/src/raylib.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdarg.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdbool.h \
  build/external/raylib-master/src/config.h \
@@ -49,20 +50,22 @@ obj/x64/Debug/raylib/raudio.o: build/external/raylib-master/src/raudio.c \
  /usr/include/bits/uintn-identity.h /usr/include/sys/select.h \
  /usr/include/bits/select.h /usr/include/bits/types/sigset_t.h \
  /usr/include/bits/types/struct_timeval.h /usr/include/alloca.h \
- /usr/include/bits/types/once_flag.h /usr/include/bits/stdlib-float.h \
- /usr/include/string.h /usr/include/strings.h /usr/include/stdio.h \
+ /usr/include/bits/stdlib-bsearch.h /usr/include/bits/types/once_flag.h \
+ /usr/include/bits/stdlib-float.h /usr/include/string.h \
+ /usr/include/strings.h /usr/include/stdio.h \
  /usr/include/bits/types/__fpos_t.h /usr/include/bits/types/__mbstate_t.h \
  /usr/include/bits/types/__fpos64_t.h /usr/include/bits/types/__FILE.h \
  /usr/include/bits/types/FILE.h /usr/include/bits/types/struct_FILE.h \
  /usr/include/bits/types/cookie_io_functions_t.h \
- /usr/include/bits/stdio_lim.h /usr/include/wchar.h \
- /usr/include/bits/wchar.h /usr/include/bits/types/wint_t.h \
- /usr/include/bits/types/mbstate_t.h /usr/include/sys/time.h \
- /usr/include/unistd.h /usr/include/bits/posix_opt.h \
- /usr/include/bits/environments.h /usr/include/bits/confname.h \
- /usr/include/bits/getopt_posix.h /usr/include/bits/getopt_core.h \
- /usr/include/bits/unistd_ext.h /usr/include/sys/stat.h \
- /usr/include/bits/stat.h /usr/include/bits/struct_stat.h \
+ /usr/include/bits/stdio_lim.h /usr/include/bits/stdio.h \
+ /usr/include/wchar.h /usr/include/bits/wchar.h \
+ /usr/include/bits/types/wint_t.h /usr/include/bits/types/mbstate_t.h \
+ /usr/include/sys/time.h /usr/include/unistd.h \
+ /usr/include/bits/posix_opt.h /usr/include/bits/environments.h \
+ /usr/include/bits/confname.h /usr/include/bits/getopt_posix.h \
+ /usr/include/bits/getopt_core.h /usr/include/bits/unistd_ext.h \
+ /usr/include/sys/stat.h /usr/include/bits/stat.h \
+ /usr/include/bits/struct_stat.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/emmintrin.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/xmmintrin.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/mmintrin.h \
@@ -166,6 +169,7 @@ build/external/raylib-master/src/external/miniaudio.h:
 /usr/include/bits/types/sigset_t.h:
 /usr/include/bits/types/struct_timeval.h:
 /usr/include/alloca.h:
+/usr/include/bits/stdlib-bsearch.h:
 /usr/include/bits/types/once_flag.h:
 /usr/include/bits/stdlib-float.h:
 /usr/include/string.h:
@@ -179,6 +183,7 @@ build/external/raylib-master/src/external/miniaudio.h:
 /usr/include/bits/types/struct_FILE.h:
 /usr/include/bits/types/cookie_io_functions_t.h:
 /usr/include/bits/stdio_lim.h:
+/usr/include/bits/stdio.h:
 /usr/include/wchar.h:
 /usr/include/bits/wchar.h:
 /usr/include/bits/types/wint_t.h:

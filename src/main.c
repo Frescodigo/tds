@@ -19,6 +19,13 @@ by Jeffery Myers is marked with CC0 1.0. To view a copy of this license, visit h
 #define WINDOW_WIDTH 1600
 #define WINDOW_HEIGHT 900
 
+enum states {
+    Start,
+    Game,
+    Dead,
+};
+enum states state;
+
 enum kinds {
     Hero,
     Enemy,
@@ -44,6 +51,10 @@ float enemy_spawn_rate;
 float enemy_spawn_countdown;
 int score;
 Entity* player;
+
+Sound player_hurt_sfx;
+Sound enemy_hurt_sfx;
+Sound shot_sfx;
 
 int add_entity(enum kinds kind) {
     if (entity_count < MAX_ENTITIES) {
@@ -89,26 +100,37 @@ Vector2 direction_vector(int x1, int y1, int x2, int y2) {
     return (Vector2) { x2-x1, y2-y1 };
 }
 
+int mid(int a, int b, int c) {
+    if (a < b) {
+        if (b < c) {
+            return b;
+        }
+        return c;
+    }
+
+    if (a < c) {
+        return a;
+    }
+    return c;
+
+}
+
 void update_player();
-void update_enemy(int i);
-void update_bullet(int i);
-
-
 
 void init_game() {
     entity_count = 0;
     player = &entities[add_entity(Hero)];
 
     // player is the first entity
-    player->x = 200;
-    player->y = 400;
+    player->x = WINDOW_WIDTH/2 - player->width/2;
+    player->y = WINDOW_HEIGHT/2 - player->height/2;
     player->speed = 5.0f;
     player->width = 64;
     player->height = 64;
 
     score = 0;
 
-    enemy_spawn_rate = 1.8f;
+    enemy_spawn_rate = 0.8f;
     enemy_spawn_countdown = 0.0f;
 }
 
@@ -122,6 +144,8 @@ int main ()
 	// Create the window and OpenGL context
 	InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Top Down Shooter");
 
+    InitAudioDevice();
+
 	// Utility function from resource_dir.h to find the resources folder and set it as the current working directory so we can load from it
 	SearchAndSetResourceDir("resources");
 
@@ -131,92 +155,122 @@ int main ()
 	textures[Enemy] = LoadTexture("enemy.png");
     textures[Bullet] = LoadTexture("bullet.png");
 
+    // Load sounds
+    player_hurt_sfx = LoadSound("player_hurt.wav");
+    enemy_hurt_sfx = LoadSound("enemy_hurt.wav");
+    shot_sfx = LoadSound("shot.wav");
+
+    state = Start;
+
     init_game();
 
-    // setup stuff for enemy spawner
 
 	// game loop
 	while (!WindowShouldClose())		// run the loop until the user presses ESCAPE or presses the Close button on the window
-	{
-        // enemy spawner
-        if (enemy_spawn_countdown <= 0.0f) {
-                printf("spawnrate: %f\n", enemy_spawn_rate);
-            enemy_spawn_countdown = enemy_spawn_rate;
-            if (enemy_spawn_rate > 0.4f) {
-                enemy_spawn_rate -= 0.05;
+    {
+        switch (state) {
+        case Dead:
+        case Start:
+            if (IsKeyDown(KEY_SPACE)) {
+                state = Game;
+                continue;
             }
-            Entity* new_enemy = &entities[add_entity(Enemy)];
-            new_enemy->width = 64;
-            new_enemy->height = 64;
-            new_enemy->speed = 3.0f;
-            new_enemy->x = GetRandomValue(10, WINDOW_WIDTH - new_enemy->width - 10);
-            new_enemy->y = GetRandomValue(10, WINDOW_HEIGHT - new_enemy->height -10);
-        } else {
-            enemy_spawn_countdown -= GetFrameTime();
-        }
-
-        for (int i = 0; i < entity_count; i++) {
-            Entity* e = &entities[i];
-            float adjusted_speed = e->speed * GetFrameTime() * TARGET_FPS;
-
-            switch (e->kind) {
-            case Hero:
-                update_player();
-                break;
-            case Enemy:
-                Vector2 delta = direction_vector(e->x, e->y, player->x, player->y);
-                double dx = delta.x;
-                double dy = delta.y;
-                double mag = sqrt(dx*dx + dy*dy);
-                dx /= mag;
-                dy /= mag;
-                e->x += dx * adjusted_speed;
-                e->y += dy * adjusted_speed;
-                break;
-            case Bullet:
-                e->x += e->dx * adjusted_speed;
-                e->y += e->dy * adjusted_speed;
-                if (e->x < 0 || e->x > WINDOW_WIDTH || e->y < 0 || e->y > WINDOW_HEIGHT) {
-                    delete_entity(i);
-                    i--;
-                    continue;
+            break;
+        case Game:
+            // enemy spawner
+            if (enemy_spawn_countdown <= 0.0f) {
+                enemy_spawn_countdown = enemy_spawn_rate;
+                if (enemy_spawn_rate > 0.4f) {
+                    enemy_spawn_rate -= 0.05;
                 }
+                Entity* new_enemy = &entities[add_entity(Enemy)];
+                new_enemy->width = 64;
+                new_enemy->height = 64;
+                new_enemy->speed = 3.0f;
+                new_enemy->x = -100;
+                new_enemy->y = -100;
 
-                // check if bullet hits an enemy
-                for (int j = 0; j < entity_count; j++) {
-                    if (entities[j].kind == Enemy && are_entities_colliding(e, &entities[j])) {
-                        score += 100;
+                // make sure enemy doesn't spawn on top of player
+                do {
+                    new_enemy->x = GetRandomValue(10, WINDOW_WIDTH - new_enemy->width - 10);
+                    new_enemy->y = GetRandomValue(10, WINDOW_HEIGHT - new_enemy->height -10);
+                } while (are_entities_colliding(player, new_enemy));
 
+            } else {
+                enemy_spawn_countdown -= GetFrameTime();
+            }
+
+            for (int i = 0; i < entity_count; i++) {
+                Entity* e = &entities[i];
+                float adjusted_speed = e->speed * GetFrameTime() * TARGET_FPS;
+
+                switch (e->kind) {
+                case Hero:
+                    update_player();
+                    break;
+                case Enemy:
+                    Vector2 delta = direction_vector(e->x, e->y, player->x, player->y);
+                    double dx = delta.x;
+                    double dy = delta.y;
+                    double mag = sqrt(dx*dx + dy*dy);
+                    dx /= mag;
+                    dy /= mag;
+                    e->x += dx * adjusted_speed;
+                    e->y += dy * adjusted_speed;
+                    break;
+                case Bullet:
+                    e->x += e->dx * adjusted_speed;
+                    e->y += e->dy * adjusted_speed;
+                    if (e->x < 0 || e->x > WINDOW_WIDTH || e->y < 0 || e->y > WINDOW_HEIGHT) {
                         delete_entity(i);
                         i--;
-                        delete_entity(j);
-                        break;
+                        continue;
                     }
+
+                    // check if bullet hits an enemy
+                    for (int j = 0; j < entity_count; j++) {
+                        if (entities[j].kind == Enemy && are_entities_colliding(e, &entities[j])) {
+                            score += 100;
+                            PlaySound(enemy_hurt_sfx);
+
+                            delete_entity(i);
+                            i--;
+                            delete_entity(j);
+                            break;
+                        }
+                    }
+                    break;
                 }
-                break;
             }
+            break;
         }
+
 		// drawing
 		BeginDrawing();
 
 		// Setup the back buffer for drawing (clear color and depth buffers)
 		ClearBackground(DARKBLUE);
 
-		// draw our texture to the screen
-        for (int i = 0; i < entity_count; i++) {
-            draw_entity(&entities[i]);
+        switch (state) {
+        case Dead:
+            DrawText("You died!", 670, 300, 80, RED);
+        case Start:
+            DrawText("Press [SPACE] to start the game!", 600, 500, 30, BLACK);
+            break;
+        case Game:
+            // draw our texture to the screen
+            for (int i = 0; i < entity_count; i++) {
+                draw_entity(&entities[i]);
+            }
+
+            // score info
+            char score_msg[32] = { };
+            sprintf(score_msg, "Score: %d", score);
+            DrawText(score_msg, 200, 10, 48, BLACK);
+
+            break;
         }
 
-        // debug info
-        char entity_count_msg[32] = { 0 };
-        sprintf(entity_count_msg, "entity count: %d", entity_count);
-        DrawText(entity_count_msg, 10, 10, 16, BLACK);
-
-        // score info
-        char score_msg[32] = { };
-        sprintf(score_msg, "Score: %d:", score);
-        DrawText(score_msg, 200, 10, 48, BLACK);
-		
 		// end the frame and get ready for the next one  (display frame, poll input, etc...)
 		EndDrawing();
 	}
@@ -226,6 +280,12 @@ int main ()
     for (int i = 0; i < KindsCount; i++) {
         UnloadTexture(textures[i]);
     }
+
+    UnloadSound(player_hurt_sfx);
+    UnloadSound(enemy_hurt_sfx);
+    UnloadSound(shot_sfx);
+
+    CloseAudioDevice();
 
 	// destroy the window and cleanup the OpenGL context
 	CloseWindow();
@@ -266,16 +326,24 @@ void update_player() {
         player->x += player->dx;
         player->y += player->dy;
 
+        player->x = mid(player->x, 0, WINDOW_WIDTH - player->width);
+        player->y = mid(player->y, 0, WINDOW_HEIGHT - player->height);
+
         for (int i = 0; i < entity_count; i++) {
             if (entities[i].kind == Enemy && are_entities_colliding(player, &entities[i])) {
+                PlaySound(player_hurt_sfx);
                 init_game();
+                state = Dead;
+                return;
             }
         }
 
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+            PlaySound(shot_sfx);
+
             int new_bullet_idx = add_entity(Bullet);
             Entity* new_bullet = &entities[new_bullet_idx];
-            new_bullet->speed = 9.0f;
+            new_bullet->speed = 12.0f;
 
             new_bullet->width = 16;
             new_bullet->height = 16;
@@ -295,6 +363,5 @@ void update_player() {
             new_bullet->dx = dx;
             new_bullet->dy = dy;
         }
-
 }
 

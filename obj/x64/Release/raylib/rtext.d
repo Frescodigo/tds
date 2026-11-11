@@ -1,6 +1,5 @@
-obj/x64/Debug/raylib/rtextures.o: \
- build/external/raylib-master/src/rtextures.c /usr/include/stdc-predef.h \
- build/external/raylib-master/src/raylib.h \
+obj/x64/Release/raylib/rtext.o: build/external/raylib-master/src/rtext.c \
+ /usr/include/stdc-predef.h build/external/raylib-master/src/raylib.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdarg.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdbool.h \
  build/external/raylib-master/src/config.h \
@@ -28,42 +27,25 @@ obj/x64/Debug/raylib/rtextures.o: \
  /usr/include/bits/pthreadtypes-arch.h \
  /usr/include/bits/atomic_wide_counter.h /usr/include/bits/struct_mutex.h \
  /usr/include/bits/struct_rwlock.h /usr/include/alloca.h \
- /usr/include/bits/types/once_flag.h /usr/include/bits/stdlib-float.h \
- /usr/include/string.h /usr/include/bits/types/locale_t.h \
- /usr/include/bits/types/__locale_t.h /usr/include/strings.h \
- /usr/include/math.h /usr/include/bits/math-vector.h \
- /usr/include/bits/libm-simd-decl-stubs.h \
- /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
- /usr/include/bits/fp-fast.h /usr/include/bits/mathcalls-macros.h \
- /usr/include/bits/mathcalls-helper-functions.h \
- /usr/include/bits/mathcalls.h /usr/include/bits/mathcalls-narrow.h \
- /usr/include/bits/iscanonical.h /usr/include/stdio.h \
+ /usr/include/bits/stdlib-bsearch.h /usr/include/bits/types/once_flag.h \
+ /usr/include/bits/stdlib-float.h /usr/include/stdio.h \
  /usr/include/bits/types/__fpos_t.h /usr/include/bits/types/__mbstate_t.h \
  /usr/include/bits/types/__fpos64_t.h /usr/include/bits/types/__FILE.h \
  /usr/include/bits/types/FILE.h /usr/include/bits/types/struct_FILE.h \
  /usr/include/bits/types/cookie_io_functions_t.h \
- /usr/include/bits/stdio_lim.h \
- /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/limits.h \
- /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/syslimits.h \
- /usr/include/limits.h /usr/include/bits/posix1_lim.h \
- /usr/include/bits/local_lim.h /usr/include/linux/limits.h \
- /usr/include/bits/pthread_stack_min-dynamic.h \
- /usr/include/bits/pthread_stack_min.h /usr/include/bits/posix2_lim.h \
- build/external/raylib-master/src/external/stb_image.h \
- /usr/include/assert.h \
- /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdint.h \
- /usr/include/stdint.h /usr/include/bits/wchar.h \
- /usr/include/bits/stdint-uintn.h /usr/include/bits/stdint-least.h \
- /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/emmintrin.h \
- /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/xmmintrin.h \
- /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/mmintrin.h \
- /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/mm_malloc.h \
- build/external/raylib-master/src/external/rltexgpu.h \
- build/external/raylib-master/src/external/qoi.h \
- build/external/raylib-master/src/external/stb_image_write.h \
- build/external/raylib-master/src/external/stb_perlin.h \
- build/external/raylib-master/src/external/stb_image_resize2.h \
- build/external/raylib-master/src/external/stb_image_resize2.h
+ /usr/include/bits/stdio_lim.h /usr/include/bits/stdio.h \
+ /usr/include/string.h /usr/include/bits/types/locale_t.h \
+ /usr/include/bits/types/__locale_t.h /usr/include/strings.h \
+ /usr/include/ctype.h \
+ build/external/raylib-master/src/external/stb_rect_pack.h \
+ /usr/include/assert.h /usr/include/math.h \
+ /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
+ /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
+ /usr/include/bits/fp-fast.h /usr/include/bits/mathcalls-macros.h \
+ /usr/include/bits/mathcalls-helper-functions.h \
+ /usr/include/bits/mathcalls.h /usr/include/bits/mathcalls-narrow.h \
+ /usr/include/bits/iscanonical.h \
+ build/external/raylib-master/src/external/stb_truetype.h
 /usr/include/stdc-predef.h:
 build/external/raylib-master/src/raylib.h:
 /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdarg.h:
@@ -112,12 +94,26 @@ build/external/raylib-master/src/rlgl.h:
 /usr/include/bits/struct_mutex.h:
 /usr/include/bits/struct_rwlock.h:
 /usr/include/alloca.h:
+/usr/include/bits/stdlib-bsearch.h:
 /usr/include/bits/types/once_flag.h:
 /usr/include/bits/stdlib-float.h:
+/usr/include/stdio.h:
+/usr/include/bits/types/__fpos_t.h:
+/usr/include/bits/types/__mbstate_t.h:
+/usr/include/bits/types/__fpos64_t.h:
+/usr/include/bits/types/__FILE.h:
+/usr/include/bits/types/FILE.h:
+/usr/include/bits/types/struct_FILE.h:
+/usr/include/bits/types/cookie_io_functions_t.h:
+/usr/include/bits/stdio_lim.h:
+/usr/include/bits/stdio.h:
 /usr/include/string.h:
 /usr/include/bits/types/locale_t.h:
 /usr/include/bits/types/__locale_t.h:
 /usr/include/strings.h:
+/usr/include/ctype.h:
+build/external/raylib-master/src/external/stb_rect_pack.h:
+/usr/include/assert.h:
 /usr/include/math.h:
 /usr/include/bits/math-vector.h:
 /usr/include/bits/libm-simd-decl-stubs.h:
@@ -129,38 +125,4 @@ build/external/raylib-master/src/rlgl.h:
 /usr/include/bits/mathcalls.h:
 /usr/include/bits/mathcalls-narrow.h:
 /usr/include/bits/iscanonical.h:
-/usr/include/stdio.h:
-/usr/include/bits/types/__fpos_t.h:
-/usr/include/bits/types/__mbstate_t.h:
-/usr/include/bits/types/__fpos64_t.h:
-/usr/include/bits/types/__FILE.h:
-/usr/include/bits/types/FILE.h:
-/usr/include/bits/types/struct_FILE.h:
-/usr/include/bits/types/cookie_io_functions_t.h:
-/usr/include/bits/stdio_lim.h:
-/usr/lib/gcc/x86_64-pc-linux-gnu/16/include/limits.h:
-/usr/lib/gcc/x86_64-pc-linux-gnu/16/include/syslimits.h:
-/usr/include/limits.h:
-/usr/include/bits/posix1_lim.h:
-/usr/include/bits/local_lim.h:
-/usr/include/linux/limits.h:
-/usr/include/bits/pthread_stack_min-dynamic.h:
-/usr/include/bits/pthread_stack_min.h:
-/usr/include/bits/posix2_lim.h:
-build/external/raylib-master/src/external/stb_image.h:
-/usr/include/assert.h:
-/usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdint.h:
-/usr/include/stdint.h:
-/usr/include/bits/wchar.h:
-/usr/include/bits/stdint-uintn.h:
-/usr/include/bits/stdint-least.h:
-/usr/lib/gcc/x86_64-pc-linux-gnu/16/include/emmintrin.h:
-/usr/lib/gcc/x86_64-pc-linux-gnu/16/include/xmmintrin.h:
-/usr/lib/gcc/x86_64-pc-linux-gnu/16/include/mmintrin.h:
-/usr/lib/gcc/x86_64-pc-linux-gnu/16/include/mm_malloc.h:
-build/external/raylib-master/src/external/rltexgpu.h:
-build/external/raylib-master/src/external/qoi.h:
-build/external/raylib-master/src/external/stb_image_write.h:
-build/external/raylib-master/src/external/stb_perlin.h:
-build/external/raylib-master/src/external/stb_image_resize2.h:
-build/external/raylib-master/src/external/stb_image_resize2.h:
+build/external/raylib-master/src/external/stb_truetype.h:

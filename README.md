@@ -16,7 +16,8 @@ Made using the [raylib quickstart repo](https://github.com/raylib-extras/raylib-
 - [X] enemies die when shot
 - [X] score
 - [X] death
-- [ ] sfx
+- [X] sfx
+- [X] menu
 
 ### Stretch goals
 - [ ] multiple enemy types
